@@ -21,14 +21,11 @@ export const Layout = withRouter(({ history }) => {
           });
         }}>Logout</Button>
       </div>
-      <ListItem style={listItemStyle} button component={Link} to="app/coacheeSelector" >
-        <ListItemText style={listItemTextStyle} primary="COACHEE SELECTOR" />
+      <ListItem style={listItemStyle} button component={Link} to="/app/coacheeSelector" >
+        <ListItemText style={listItemTextStyle} primary="Coachee Selector" />
       </ListItem>
-      <ListItem style={listItemStyle} button component={Link} to="app/qualityTracker/recentTouchpoints" >
-        <ListItemText style={listItemTextStyle} primary="QUALITY TRACKER" />
-      </ListItem>
-      <ListItem style={listItemStyle} button component={Link} to="app/dashboard/company" >
-        <ListItemText style={listItemTextStyle} primary="DASHBOARD" />
+      <ListItem style={listItemStyle} button component={Link} to="/app/dashboard/company" >
+        <ListItemText style={listItemTextStyle} primary="Admin Dashboard" />
       </ListItem>
     </div >
   );

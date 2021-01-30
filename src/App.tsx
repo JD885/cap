@@ -13,6 +13,13 @@ import { Coachee } from './pages/coachee';
 import { Dashboard } from './pages/dashboard';
 import { QualityTracker } from './pages/qualityTracker';
 import { CoacheeSelector } from './pages/coacheeSelector';
+import { Touchpoint } from './pages/touchpoint';
+import { ABS } from './pages/abs';
+import { Survey } from './pages/survey';
+import { Meeting } from './pages/meeting';
+import { Field } from './pages/field';
+import { MeetingTraining } from './pages/meetingTraining';
+import { Triad } from './pages/triad';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -44,10 +51,17 @@ function App() {
             {/* These are placeholders and can be freely removed/edited during development */}
             <Route exact path='/' component={Login}></Route>
             <ProtectedRoute exact path='/app' component={Layout} />
-            <ProtectedRoute path='/app/coachee/:id' component={Coachee} />
+            <ProtectedRoute path='/app/coachee/' component={Coachee} />
             <ProtectedRoute path='/app/dashboard/:id' component={Dashboard} />
             <ProtectedRoute path='/app/qualityTracker/:id' component={QualityTracker} />
             <ProtectedRoute path='/app/coacheeSelector' component={CoacheeSelector} />
+            <ProtectedRoute path='/app/abs' component={ABS} />
+            <ProtectedRoute path='/app/touchpoint' component={Touchpoint} />
+            <ProtectedRoute path='/app/survey' component={Survey} />
+            <ProtectedRoute path='/app/meeting' component={Meeting} />
+            <ProtectedRoute path='/app/field' component={Field} />
+            <ProtectedRoute path='/app/meetingTraining' component={MeetingTraining} />
+            <ProtectedRoute path='/app/triad' component={Triad} />
             <Route path='/' render={() => (<div>404 NOT FOUND</div>)}></Route>
           </Switch>
         </GlobalProvider>

@@ -5,7 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 
 interface TabPanelProps {
@@ -85,6 +85,7 @@ export const QualityTracker = withRouter(({ history, match }) => {
         >
           <Tab label="Recent Touchpoints" {...a11yProps(0)} value='recentTouchpoints' />
           <Tab label="Personal Notes" {...a11yProps(1)} value='notes' />
+          <Tab label="Chart" {...a11yProps(2)} value='chart' />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={'recentTouchpoints'}>
@@ -93,6 +94,10 @@ export const QualityTracker = withRouter(({ history, match }) => {
       <TabPanel value={value} index={'notes'}>
         Personal Notes Implementation
       </TabPanel>
+      <TabPanel value={value} index={'chart'}>
+        Chart Implementation
+      </TabPanel>
+      <Link to="/app/touchpoint" >&lt;&lt; Go Back  &lt;&lt;</Link>
     </div>
   );
 });

@@ -4,7 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 
 interface TabPanelProps {
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 224,
+    height: 340,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -77,6 +77,10 @@ export const Dashboard = withRouter(({ history, match }) => {
           <Tab label="Create/Update Company" {...a11yProps(0)} value='company' />
           <Tab label="Create Coach Login" {...a11yProps(1)} value='coach' />
           <Tab label="Create New CAP" {...a11yProps(2)} value='cap' />
+          <Tab label="Quality Tracker" {...a11yProps(3)} value='qualityTracker' />
+          <Tab label="Data to CSV" {...a11yProps(4)} value='data' />
+          <Tab label="Data Visualization" {...a11yProps(5)} value='dataVisualization' />
+          <Tab label="Goals for Coachee" {...a11yProps(6)} value='coacheeGoals' />
         </Tabs>
         <TabPanel value={value} index={'company'}>
           Implement Create/Update Company
@@ -87,7 +91,20 @@ export const Dashboard = withRouter(({ history, match }) => {
         <TabPanel value={value} index={'cap'}>
           Implement Create New CAP
       </TabPanel>
+        <TabPanel value={value} index={'qualityTracker'}>
+          Implement Quality Tracker
+        </TabPanel>
+        <TabPanel value={value} index={'data'}>
+          Implement Data to CSV
+        </TabPanel>
+        <TabPanel value={value} index={'dataVisualization'}>
+          Implement Data Visualization
+        </TabPanel>
+        <TabPanel value={value} index={'coacheeGoals'}>
+          Implement Goals for Coachee
+        </TabPanel>
       </div>
+      <Link to="/app" >&lt;&lt; Go Back  &lt;&lt;</Link>
     </>
   );
 });
