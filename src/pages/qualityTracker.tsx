@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link, withRouter } from "react-router-dom";
-
+import {translate} from "../constants/translate"
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const QualityTracker = withRouter(({ history, match }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('recentTouchpoints');
-
+  const translations = translate.use().qualityTracker;
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
     history.push('/app/qualityTracker/' + newValue);
@@ -86,6 +86,8 @@ export const QualityTracker = withRouter(({ history, match }) => {
           <Tab label="Recent Touchpoints" {...a11yProps(0)} value='recentTouchpoints' />
           <Tab label="Personal Notes" {...a11yProps(1)} value='notes' />
           <Tab label="Chart" {...a11yProps(2)} value='chart' />
+          <Tab label={translations.recent} {...a11yProps(0)} value='recentTouchpoints' />
+          <Tab label={translations.personal} {...a11yProps(1)} value='notes' />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={'recentTouchpoints'}>

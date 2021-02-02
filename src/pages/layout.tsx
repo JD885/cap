@@ -3,9 +3,11 @@ import { Link, withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { ListItem, ListItemText } from '@material-ui/core';
 import auth from '../auth/auth';
+import {translate} from "../constants/translate";
 
 export const Layout = withRouter(({ history }) => {
 
+  const translation = translate.use().layoutPage;
   const listItemStyle = {
     height: '25vh'
   };
@@ -14,7 +16,7 @@ export const Layout = withRouter(({ history }) => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '24px' }}>
-        <h1 >Main Menu Page</h1>
+        <h1 >{translation.mainMenu}</h1>
         <Button style={buttonStyle} onClick={() => {
           auth.logout(() => {
             history.push('/');

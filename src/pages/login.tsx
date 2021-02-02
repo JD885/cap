@@ -6,7 +6,7 @@ import { GlobalContext, globalUser } from '../stores/global-store';
 import { useForm, Controller } from "react-hook-form";
 import { withRouter } from 'react-router-dom';
 import auth from '../auth/auth';
-
+import {translate} from "../constants/translate";
 
 //   date: january 26 2021
 //  **** THIS IS A TEST DUMMY PAGE FEEL FREE TO REMOVE ********
@@ -38,7 +38,10 @@ export const Login = withRouter(({ history }) => {
 
   const classes = useStyles();
 
+  const translations = translate.use().loginPage;
+
   function submitForm(data: ILoginInput) {
+
 
     const newUser: globalUser = {
       username: data.username,
@@ -57,12 +60,12 @@ export const Login = withRouter(({ history }) => {
 
     <div style={{ marginLeft: '24px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h1>Landing Page</h1>
+        <h1>{translations.title}</h1>
         <Button style={{ padding: '2rem' }} onClick={() => {
           auth.login(() => {
             history.push('app');
           });
-        }}>Bypass Authentication</Button>
+        }}>{translations.bypass}</Button>
       </div>
 
       <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit(submitForm)}>
@@ -71,15 +74,15 @@ export const Login = withRouter(({ history }) => {
         <Controller
           name="username"
           control={control}
-          render={({ onChange, value }) => <TextField onChange={onChange} value={value} label='username' />} />
+          render={({ onChange, value }) => <TextField onChange={onChange} value={value} label={translations.username} />} />
 
         <Controller
           name="password"
           control={control}
-          render={({ onChange, value }) => <TextField onChange={onChange} value={value} id='standard-basic' label='password' />} />
+          render={({ onChange, value }) => <TextField onChange={onChange} value={value} id='standard-basic' label={translations.password} />} />
 
         <Button variant="contained" color="primary" type="submit">
-          Login
+          {translations.login}
         </Button>
       </form>
     </div>
