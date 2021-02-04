@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -63,19 +63,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const QualityTracker = withRouter(({ history, match }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('recentTouchpoints');
   const translations = translate.use().qualityTracker;
+  const [value, setValue] = React.useState(match.params.id);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
-    history.push('/app/qualityTracker/' + newValue);
+    history.replace('/app/qualityTracker/' + newValue);
   };
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <h1 style={{ display: "flex", justifyContent: 'center' }}>Quality Tracker</h1>
+        <Typography variant='h5' align='center' color='primary' >Quality Tracker</Typography>
         <Tabs
-          value={match.params.id}
+          value={value}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -99,7 +99,6 @@ export const QualityTracker = withRouter(({ history, match }) => {
       <TabPanel value={value} index={'chart'}>
         Chart Implementation
       </TabPanel>
-      <Link to="/app/touchpoint" >&lt;&lt; Go Back  &lt;&lt;</Link>
     </div>
   );
 });

@@ -82,18 +82,18 @@ function App() {
           <Switch>
             {/* These are placeholders and can be freely removed/edited during development */}
             <Route exact path='/' component={Login}></Route>
-            <ProtectedRoute exact path='/app' component={Layout} />
-            <ProtectedRoute path='/app/coachee/' component={Coachee} />
-            <ProtectedRoute path='/app/dashboard/:id' component={Dashboard} />
-            <ProtectedRoute path='/app/qualityTracker/:id' component={QualityTracker} />
-            <ProtectedRoute path='/app/coacheeSelector' component={CoacheeSelector} />
-            <ProtectedRoute path='/app/abs' component={ABS} />
-            <ProtectedRoute path='/app/touchpoint' component={Touchpoint} />
-            <ProtectedRoute path='/app/survey' component={Survey} />
-            <ProtectedRoute path='/app/meeting' component={Meeting} />
-            <ProtectedRoute path='/app/field' component={Field} />
-            <ProtectedRoute path='/app/meetingTraining' component={MeetingTraining} />
-            <ProtectedRoute path='/app/triad' component={Triad} />
+            <Route exact path='/app' component={Layout} />
+            <Route path='/app/coachee' component={Coachee} />
+            <Route path='/app/dashboard/:id?' component={Dashboard} />
+            <Route path='/app/qualityTracker/:id?' component={QualityTracker} />
+            <Route path='/app/coacheeSelector' component={CoacheeSelector} />
+            <Route path='/app/abs' component={ABS} />
+            <Route path='/app/touchpoint' component={Touchpoint} />
+            <Route path='/app/survey' component={Survey} />
+            <Route path='/app/meeting' component={Meeting} />
+            <Route path='/app/field' component={Field} />
+            <Route path='/app/meetingTraining' component={MeetingTraining} />
+            <Route path='/app/triad' component={Triad} />
             <Route path='/' render={() => (<div>404 NOT FOUND</div>)}></Route>
           </Switch>
         </GlobalProvider>

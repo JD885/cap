@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 
 interface TabPanelProps {
@@ -54,27 +54,26 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Dashboard = withRouter(({ history, match }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('company');
+  const [value, setValue] = React.useState(match.params.id);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     setValue(newValue);
-    history.push('/app/dashboard/' + newValue);
+    history.replace('/app/dashboard/' + newValue);
   };
 
   return (
     <>
-      <h1 style={{ display: "flex", justifyContent: 'center' }}>Dashboard</h1>
+      <Typography variant='h5' align='center' color='primary'>Dashboard</Typography>
       <div className={classes.root}>
-
         <Tabs
           orientation="vertical"
           variant="scrollable"
-          value={match.params.id}
+          value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
-          <Tab label="Create/Update Company" {...a11yProps(0)} value='company' />
+          <Tab label="Create / Update Company" {...a11yProps(0)} value='company' />
           <Tab label="Create Coach Login" {...a11yProps(1)} value='coach' />
           <Tab label="Create New CAP" {...a11yProps(2)} value='cap' />
           <Tab label="Quality Tracker" {...a11yProps(3)} value='qualityTracker' />
@@ -104,7 +103,6 @@ export const Dashboard = withRouter(({ history, match }) => {
           Implement Goals for Coachee
         </TabPanel>
       </div>
-      <Link to="/app" >&lt;&lt; Go Back  &lt;&lt;</Link>
     </>
   );
 });
