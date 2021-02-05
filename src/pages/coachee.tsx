@@ -20,7 +20,8 @@ export const Coachee = withRouter(({ history, match }) => {
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '20vh', background: '#bbbbbb' }}>
-        <p>Coachee Profile Form and Edit Button </p>
+        <p>Coachee Profile Form and Edit Button</p>
+        <p style={{marginLeft: '40px'}}>Coachee ID: {String(match.params.id)}</p>
       </div>
       <div style={{ display: 'flex' }}>
         <ListItem style={listItemStyle} button component={Link} to="/app/abs" >

@@ -83,7 +83,7 @@ function App() {
             {/* These are placeholders and can be freely removed/edited during development */}
             <Route exact path='/' component={Login}></Route>
             <Route exact path='/app' component={Layout} />
-            <Route path='/app/coachee' component={Coachee} />
+            <Route path='/app/coachee/:id?' component={Coachee} />
             <Route path='/app/dashboard/:id?' component={Dashboard} />
             <Route path='/app/qualityTracker/:id?' component={QualityTracker} />
             <Route path='/app/coacheeSelector' component={CoacheeSelector} />
