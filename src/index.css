@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+img.spinner {
+  position: absolute;
+  top: calc(50%);
+  left: calc(50% - 4rem);
+  width: 8rem;
+  height: 8rem;
+  animation: load8 1.5s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+img.name {
+  display: block;
+  width: 10rem;
+  position: absolute;
+  top: calc(20%);
+  left: calc(50% - 5rem);
+}
+
+@media (min-width: 360px) and (min-height: 568px) {
+  img.spinner {
+    top: calc(45%);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+  img.name {
+    width: 12rem;
+    top: calc(25%);
+    left: calc(50% - 6rem);
+  }
+}
+@media (min-width: 360px) and (min-height: 731px) {
+  img.spinner {
+    top: calc(48%);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+  img.name {
+    width: 12rem;
+    top: calc(30%);
+    left: calc(50% - 6rem);
+  }
+}
+@media (min-width: 768px) and (min-height: 568px) {
+  img.name {
+    width: 18rem;
+    left: calc(50% - 9rem);
+  }
+  img.spinner {
+    top: 48%;
+    left: calc(50% - 8rem);
+    width: 16rem;
+    height: 16rem;
+  }
+}
+@media (min-width: 1000px) and (min-height: 768px) {
+  img.spinner {
+    top: 55%;
+    width: 16rem;
+    height: 16rem;
+  }
+}
+@media (min-width: 1000px) and (min-height: 1100px) {
+  img.spinner {
+    top: 45%;
+    width: 16rem;
+    height: 16rem;
+  }
+  img.name {
+    top: 30%;
+    width: 18rem;
+  }
+}

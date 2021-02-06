@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { Route, Switch } from "react-router-dom";
-import {
-  Paper,
-  Switch as UISwitch,
-  AppBar,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import { useLocalStore, useObserver } from "mobx-react-lite";
-import { GlobalProvider } from "./stores/global-store";
-import "./App.css";
+import React, { useState,useEffect} from 'react';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Route, Switch } from 'react-router-dom';
+import { Paper, Switch as UISwitch, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { useLocalStore, useObserver } from 'mobx-react-lite';
+import { GlobalProvider } from './stores/global-store';
+import './App.css';
 
 import { Login } from './pages/login';
 import { Layout } from './pages/layout';
@@ -44,6 +38,7 @@ function ChangeLanguageButton({
   return <button onClick={onClick}>{label}</button>;
 }
 
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const darkTheme = createMuiTheme({
@@ -52,9 +47,27 @@ function App() {
     },
   });
   const lightTheme = createMuiTheme({});
+  let [loading,setStatus]=useState(true);
+  useEffect(()=>{
+    demoAsyncCall().then(()=>setStatus(loading=false));
+  })
+    
+
+  function demoAsyncCall() {
+    return new Promise<void>((resolve) => setTimeout(() => resolve(), 2500));
+  }
 
   const translations = translate.use().appBar;
 
+  if(loading){
+    return (   
+      <div>
+          <img src="img/SCC-logo-sm.png" alt="SCC logo" className="spinner" />
+          <img src="img/SCC-name.png" alt="SCC company name" className="name"/>
+      </div>  
+    );
+  }
+  else{
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       {/* paper allows for the changing in the theme, so wrap file componets and pages in a paper componet  */}
@@ -101,5 +114,7 @@ function App() {
     </ThemeProvider>
   );
 }
+  }
 
 export default App;
+
