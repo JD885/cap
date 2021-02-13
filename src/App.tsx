@@ -1,14 +1,13 @@
 import React, { useState,useEffect} from 'react';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Route, Switch } from 'react-router-dom';
-import { Paper, Switch as UISwitch, AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Route, Switch, Link as RouterLink } from 'react-router-dom';
+import { Paper, Switch as UISwitch, AppBar, Toolbar, Typography, Link } from "@material-ui/core";
 import { useLocalStore, useObserver } from 'mobx-react-lite';
 import { GlobalProvider } from './stores/global-store';
 import './App.css';
 
 import { Login } from './pages/login';
 import { Layout } from './pages/layout';
-import { ProtectedRoute } from './auth/protected';
 import { Coachee } from './pages/coachee';
 import { Dashboard } from './pages/dashboard';
 import { QualityTracker } from './pages/qualityTracker';
@@ -20,7 +19,10 @@ import { Meeting } from './pages/meeting';
 import { Field } from './pages/field';
 import { MeetingTraining } from './pages/meetingTraining';
 import { Triad } from './pages/triad';
+import { ScheduleTouchpoint } from './pages/scheduleTouchpoint';
 import {translate} from "./constants/translate";
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 function ChangeLanguageButton({
   language,
@@ -38,6 +40,7 @@ function ChangeLanguageButton({
   return <button onClick={onClick}>{label}</button>;
 }
 
+const queryClient = new QueryClient();
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -54,7 +57,7 @@ function App() {
     
 
   function demoAsyncCall() {
-    return new Promise<void>((resolve) => setTimeout(() => resolve(), 2500));
+    return new Promise<void>((resolve) => setTimeout(() => resolve(), 250));
   }
 
   const translations = translate.use().appBar;
@@ -69,6 +72,8 @@ function App() {
   }
   else{
   return (
+    <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} />
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       {/* paper allows for the changing in the theme, so wrap file componets and pages in a paper componet  */}
       <Paper style={{ height: "100vh" }}>
@@ -76,7 +81,9 @@ function App() {
         <GlobalProvider>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h6">SCCI Company App</Typography>
+              <Link component={RouterLink} to='/app'>
+                <Typography variant="h6" style={{ color: 'white' }} >SCCI Company App</Typography>
+              </Link>
               <div className="darkSwitch">
                 <label>{translations.darkMode}</label>
                 <UISwitch
@@ -107,11 +114,13 @@ function App() {
             <Route path='/app/field' component={Field} />
             <Route path='/app/meetingTraining' component={MeetingTraining} />
             <Route path='/app/triad' component={Triad} />
+            <Route path='/app/scheduleTouchpoint' component={ScheduleTouchpoint} />
             <Route path='/' render={() => (<div>404 NOT FOUND</div>)}></Route>
           </Switch>
         </GlobalProvider>
       </Paper>
     </ThemeProvider>
+    </QueryClientProvider>
   );
 }
   }

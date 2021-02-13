@@ -49,18 +49,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-// possibly center tabs - requires package 
-
-// const useTabStyles = makeStyles({
-//   root: {
-//     justifyContent: "center"
-//   },
-//   scroller: {
-//     flexGrow: "0"
-//   }
-// });
-
-
 export const QualityTracker = withRouter(({ history, match }) => {
   const classes = useStyles();
   const translations = translate.use().qualityTracker;
@@ -80,14 +68,13 @@ export const QualityTracker = withRouter(({ history, match }) => {
           indicatorColor="primary"
           textColor="primary"
           variant="scrollable"
-          scrollButtons="auto"
+          scrollButtons="on"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Recent Touchpoints" {...a11yProps(0)} value='recentTouchpoints' />
-          <Tab label="Personal Notes" {...a11yProps(1)} value='notes' />
-          <Tab label="Chart" {...a11yProps(2)} value='chart' />
           <Tab label={translations.recent} {...a11yProps(0)} value='recentTouchpoints' />
           <Tab label={translations.personal} {...a11yProps(1)} value='notes' />
+          <Tab label="Chart" {...a11yProps(2)} value='chart' />
+
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={'recentTouchpoints'}>

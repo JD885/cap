@@ -58,6 +58,10 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:"SÉLECTEUR D'ENTRAÎNEUR",
         en:"COACHEE SELECTOR"
       },
+      schedule:{
+        fr:"Planifier le point de contact",
+        en:"Schedule Touchpoint"
+      },
       quality:{
         fr:"TRACKER DE QUALITÉ",
         en:"QUALITY TRACKER"
@@ -104,6 +108,48 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:"no translation yet",
         en:"Personal Notes"
       }
+    },
+    scheduleTouchpoint:{
+      title:{
+        fr:"Planificateur de points de contact",
+        en:"Touchpoint Scheduler"
+      },
+      button:{
+        fr:"Planifier le point de contact",
+        en:"Schedule Touchpoint"
+      },
+      coachee:{
+        fr:"Coaché",
+        en:"Coachee"
+      },
+      none:{
+        fr:"aucun",
+        en:"none"
+      },
+      type:{
+        fr:"Type de point de contact",
+        en:"Touchpoint Type"
+      },
+      date:{
+        fr:"Date du point de contact",
+        en:"Touchpoint Date"
+      },
+      time:{
+        fr:"Temps de point de contact",
+        en:"Touchpoint Time"
+      },
+      coacheeError:{
+        fr:"Le champ Coachee ne peut pas être vide",
+        en:"Coachee field cannot be empty"
+      },
+      typeError:{
+        fr:"Le champ de type ne peut pas être vide",
+        en:"Type field cannot be empty"
+      },
+      dateError:{
+        fr:"Heure ou date invalide",
+        en:"Invalid time or date"
+      },
     }
   },
   {

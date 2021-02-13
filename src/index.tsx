@@ -5,6 +5,9 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
+import { makeServer } from './server/server';
+
+makeServer();
 
 ReactDOM.render(
   <React.StrictMode>

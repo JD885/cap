@@ -23,6 +23,9 @@ export const Layout = withRouter(({ history }) => {
           });
         }}>Logout</Button>
       </div>
+      <ListItem style={listItemStyle} button component={Link} to="/app/scheduleTouchpoint" >
+        <ListItemText style={listItemTextStyle} primary={translation.schedule} />
+      </ListItem>
       <ListItem style={listItemStyle} button component={Link} to="/app/coacheeSelector" >
         <ListItemText style={listItemTextStyle} primary="Coachee Selector" />
       </ListItem>
