@@ -2,6 +2,7 @@ export interface Touchpoint {
   meetingID?: number,
   meetingTypeID: number,
   meetingDate: Date,
-  coacheeID: number,
+  coacheeID: string,
   userID: number,
+  notes:string
 }

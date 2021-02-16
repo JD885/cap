@@ -1,18 +1,17 @@
 import 'date-fns';
-import React, { useContext, useState } from 'react';
-import { Typography, Button, InputLabel, MenuItem, FormControl, Select, Snackbar, CircularProgress } from '@material-ui/core';
+import React, { useContext, useState, useEffect} from 'react';
+import { Typography, Button, InputLabel, MenuItem, FormControl, Select, Snackbar, CircularProgress, TextField } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
-import { API } from '../constants/api-endpoints';
 import { getCoacheesByCoach, getMeetingTypes, createTouchpoint } from '../api/api';
-import { Server } from 'miragejs';
 import { Coachee } from '../models/coachee';
 import { MeetingType } from '../models/meetingType';
 import { GlobalContext } from '../stores/global-store';
 import { useQuery, useMutation } from 'react-query';
 import { translate } from "../constants/translate";
+import {TouchpointSkeleton} from '../components/skeleton-loader/schedule-touchpoint-skeleton'
 
 
 
@@ -47,18 +46,27 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+interface coacheeProp
+{
+  coacheeID:string;
+}
+
 //Schedule Touchpoint component
-export function ScheduleTouchpoint() {
+export function ScheduleTouchpoint(prop?:coacheeProp) {
+  
+  let coacheeSelected= (!prop?.coacheeID) ? false : true
   const store = useContext(GlobalContext);
   const classes = useStyles();
   const translations = translate.use().scheduleTouchpoint;
   let newDate = (new Date()).setHours(12, 0, 0);
   const [type, setType] = useState(0);
-  const [coachee, setCoachee] = useState(0);
+  const [coachee, setCoachee] = useState("-1");
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(newDate));
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [notes, setNotes] = useState("");
+
 
   // React Query useQueries
   const coachees = useQuery<Coachee[], Error, Coachee[]>('coachees', () => getCoacheesByCoach(store._userID!));
@@ -81,10 +89,12 @@ export function ScheduleTouchpoint() {
   const handleValidation = () => {
     let formIsValid = true;
     let errors: string[] = [];
-    if (coachee === 0) {
+    if (!coacheeSelected && (coachee === "-1" || !coachee) )
+    {
       formIsValid = false;
       errors.push(translations.coacheeError);
     }
+
     if (type === 0) {
       formIsValid = false;
       errors.push(translations.typeError);
@@ -115,9 +125,10 @@ export function ScheduleTouchpoint() {
       setAlertSeverity('success');
       setAlertMessage(`Touchpoint ${data.meetingID} created`);
       setOpen(true);
-      setCoachee(0);
+      if(!coacheeSelected)setCoachee("-1");
       setType(0);
       setSelectedDate(new Date(newDate));
+      setNotes("");
     }
   });
 
@@ -130,7 +141,8 @@ export function ScheduleTouchpoint() {
         meetingTypeID: type,
         meetingDate: selectedDate!,
         coacheeID: coachee,
-        userID: store._userID!
+        userID: store._userID!,
+        notes:notes
       });
     }
     else { //Invalid form
@@ -145,10 +157,10 @@ export function ScheduleTouchpoint() {
       <form className={classes.root} onSubmit={saveTouchpoint}>
         <Typography className={classes.title} variant='h5' align='center'>{translations.title}</Typography>
         {(types.isLoading || coachees.isLoading)
-          ? <CircularProgress/>
+          ? <TouchpointSkeleton/>
           : (types.isError || coachees.isError)
             ? <p>An error occurred: {coachees.isError && coachees.error.message} {types.isError && types.error.message}</p> : <>
-              <FormControl className={classes.formControl}>
+              {!coacheeSelected && <FormControl className={classes.formControl}>
                 <InputLabel id="coachee-label">{translations.coachee}</InputLabel>
                 <Select
                   labelId="coachee-label"
@@ -156,12 +168,12 @@ export function ScheduleTouchpoint() {
                   value={coachee}
                   onChange={handleCoacheeChange}
                 >
-                  <MenuItem value={parseInt('0')} key='0'>{translations.none}</MenuItem>;
+                  <MenuItem value={"-1"} key='-1'>{translations.none}</MenuItem>;
                   {coachees.data!.map((coachee: Coachee) => {
                     return <MenuItem value={coachee.coacheeID} key={coachee.coacheeID}>{coachee.firstName} {coachee.lastName}</MenuItem>;
                   })}
                 </Select>
-              </FormControl>
+              </FormControl>}
               <FormControl className={classes.formControl}>
                 <InputLabel id="type-label">{translations.type}</InputLabel>
                 <Select
@@ -203,6 +215,16 @@ export function ScheduleTouchpoint() {
                   />
                 </FormControl>
               </MuiPickersUtilsProvider>
+              <FormControl className={classes.formControl}>
+                <TextField
+                  variant="outlined"
+                  multiline
+                  value={notes}
+                  onChange={(event)=>{setNotes(event.target.value)}}
+                  label={translations.notes}
+                  />
+              </FormControl> 
+
               <FormControl className={classes.formControl}>
                 <Button color="primary" variant='contained' type='submit'>{translations.button}</Button>
               </FormControl>

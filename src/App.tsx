@@ -76,7 +76,7 @@ function App() {
     <ReactQueryDevtools initialIsOpen={false} />
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       {/* paper allows for the changing in the theme, so wrap file componets and pages in a paper componet  */}
-      <Paper style={{ height: "100vh" }}>
+      <Paper style={{ height: "100%", minHeight:"100vh" }}>
         {/* paper handles all of the background and forground that will be used through out the app, app bar is the banner for the top so toggel switch wasnt placed in a odd space  */}
         <GlobalProvider>
           <AppBar position="static">

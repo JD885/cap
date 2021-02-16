@@ -18,6 +18,8 @@ function getBestLanguage():
   );
 }
 
+const NO_TRANSLATION = "Missing Translation"
+
 // create a translation object with your translations
 const translate = createTranslations<TranslationLanguages>()(
   {
@@ -150,6 +152,10 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:"Heure ou date invalide",
         en:"Invalid time or date"
       },
+      notes:{
+        fr:NO_TRANSLATION,
+        en:"Meeting Notes:"
+      }
     }
   },
   {
