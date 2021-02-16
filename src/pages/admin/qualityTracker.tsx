@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link, withRouter } from "react-router-dom";
-import {translate} from "../constants/translate"
+import {translate} from "../../constants/translate"
 
 interface TabPanelProps {
   children?: React.ReactNode;

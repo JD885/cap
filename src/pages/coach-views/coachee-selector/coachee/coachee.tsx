@@ -5,8 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {TabPanel} from '../components/tab-panel'
-import {ScheduleTouchpoint} from './scheduleTouchpoint'
+import {TabPanel} from '../../../../components/tab-panel'
+import {ScheduleTouchpoint} from '../../triad-no-coachee/scheduleTouchpoint'
 
 interface TabPanelProps {
   children?: React.ReactNode;

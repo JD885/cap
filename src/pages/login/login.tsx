@@ -2,11 +2,11 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { GlobalContext, globalUser } from '../stores/global-store';
+import { GlobalContext, globalUser } from '../../stores/global-store';
 import { useForm, Controller } from "react-hook-form";
 import { withRouter } from 'react-router-dom';
-import auth from '../auth/auth';
-import {translate} from "../constants/translate";
+import auth from '../../auth/auth';
+import {translate} from "../../constants/translate";
 
 //   date: january 26 2021
 //  **** THIS IS A TEST DUMMY PAGE FEEL FREE TO REMOVE ********

@@ -1,108 +1,77 @@
 import React, { useState,useEffect} from 'react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme,  } from '@material-ui/core/styles';
 import { Route, Switch, Link as RouterLink } from 'react-router-dom';
-import { Paper, Switch as UISwitch, AppBar, Toolbar, Typography, Link } from "@material-ui/core";
-import { useLocalStore, useObserver } from 'mobx-react-lite';
-import { GlobalProvider } from './stores/global-store';
+import { AppBar, Link, Paper, Toolbar, Typography } from "@material-ui/core";
+import { GlobalContext, GlobalProvider } from './stores/global-store';
 import './App.css';
 
-import { Login } from './pages/login';
-import { Layout } from './pages/layout';
-import { Coachee } from './pages/coachee';
-import { Dashboard } from './pages/dashboard';
-import { QualityTracker } from './pages/qualityTracker';
-import { CoacheeSelector } from './pages/coacheeSelector';
-import { Touchpoint } from './pages/touchpoint';
-import { ABS } from './pages/abs';
-import { Survey } from './pages/survey';
-import { Meeting } from './pages/meeting';
-import { Field } from './pages/field';
-import { MeetingTraining } from './pages/meetingTraining';
-import { Triad } from './pages/triad';
-import { ScheduleTouchpoint } from './pages/scheduleTouchpoint';
+import { Login } from './pages/login/login';
+import { Layout } from './pages/coach-views/coachee-selector/coachee/layout';
+import { Coachee } from './pages/coach-views/coachee-selector/coachee/coachee';
+import { Dashboard } from './pages/admin/dashboard';
+import { QualityTracker } from './pages/admin/qualityTracker';
+import { CoacheeSelector } from './pages/coach-views/coachee-selector/coacheeSelector';
+import { Touchpoint } from './pages/coach-views/coachee-selector/coachee/touchpoint';
+import { ABS } from './pages/coach-views/coachee-selector/coachee/abs';
+import { Survey } from './pages/coach-views/coachee-selector/coachee/survey';
+import { Meeting } from './pages/coach-views/coachee-selector/coachee/meeting';
+import { Field } from './pages/coach-views/coachee-selector/coachee/field';
+import { MeetingTraining } from './pages/coach-views/coachee-selector/coachee/meetingTraining';
+import { Triad } from './pages/coach-views/coachee-selector/coachee/triad';
+import { ScheduleTouchpoint } from './pages/coach-views/triad-no-coachee/scheduleTouchpoint';
 import {translate} from "./constants/translate";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools';
-
-function ChangeLanguageButton({
-  language,
-  label,
-}: {
-  language: "fr" | "en";
-  label: string;
-}) {
-  const onClick = () => {
-    translate.setOptions({
-      language,
-      fallback: "en",
-    });
-  };
-  return <button onClick={onClick}>{label}</button>;
-}
+import { Banner } from './components/banner/banner';
+import { SplashScreen } from './pages/login/splash-screen';
+import { observer, Observer } from 'mobx-react-lite';
+import { Dark } from './stores/dark-mode'
+import { ImageModal } from './components/settings/image-modal';
 
 const queryClient = new QueryClient();
 
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
+export let dark = new Dark();
+
+
+
+const App=observer(()=> 
+{
+
   const darkTheme = createMuiTheme({
     palette: {
       type: "dark",
     },
   });
   const lightTheme = createMuiTheme({});
+  
   let [loading,setStatus]=useState(true);
+  
   useEffect(()=>{
     demoAsyncCall().then(()=>setStatus(loading=false));
-  })
+  }, [])
+
+  
     
 
   function demoAsyncCall() {
     return new Promise<void>((resolve) => setTimeout(() => resolve(), 250));
   }
 
-  const translations = translate.use().appBar;
+  if(loading) return <SplashScreen/>
 
-  if(loading){
-    return (   
-      <div>
-          <img src="/img/SCC-logo-sm.png" alt="SCC logo" className="spinner" />
-          <img src="/img/SCC-name.png" alt="SCC company name" className="name"/>
-      </div>  
-    );
-  }
-  else{
   return (
     <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={dark.isDark ? darkTheme : lightTheme}>
       {/* paper allows for the changing in the theme, so wrap file componets and pages in a paper componet  */}
       <Paper style={{ height: "100%", minHeight:"100vh" }}>
         {/* paper handles all of the background and forground that will be used through out the app, app bar is the banner for the top so toggel switch wasnt placed in a odd space  */}
         <GlobalProvider>
-          <AppBar position="static">
-            <Toolbar>
-              <Link component={RouterLink} to='/app'>
-                <Typography variant="h6" style={{ color: 'white' }} >SCCI Company App</Typography>
-              </Link>
-              <div className="darkSwitch">
-                <label>{translations.darkMode}</label>
-                <UISwitch
-                  className="darkSwitch"
-                  checked={darkMode}
-                  onChange={() => setDarkMode(!darkMode)}
-                />
-              </div>
-            </Toolbar>
-            <div>
-
-            <ChangeLanguageButton language={"fr"} label={"Français"} />
-            <ChangeLanguageButton language={"en"} label={"English"} />
-            </div>
-          </AppBar>
+          <Banner/>
           <Switch>
             {/* These are placeholders and can be freely removed/edited during development */}
-            <Route exact path='/' component={Login}></Route>
-            <Route exact path='/app' component={Layout} />
+            <Route exact path='/' component={Layout}/>
+            {/* <Route exact path='/app' component={Layout} /> */}
             <Route path='/app/coachee/:id?' component={Coachee} />
             <Route path='/app/dashboard/:id?' component={Dashboard} />
             <Route path='/app/qualityTracker/:id?' component={QualityTracker} />
@@ -122,8 +91,8 @@ function App() {
     </ThemeProvider>
     </QueryClientProvider>
   );
-}
-  }
+})
+  
 
 export default App;
 

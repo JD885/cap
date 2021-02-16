@@ -7,7 +7,7 @@ type TranslationLanguages = {
 };
 
 const deviceLanguage = navigator.language;
-const availableLanguages: (keyof TranslationLanguages)[] = ["en", "fr"];
+export const availableLanguages: (keyof TranslationLanguages)[] = ["en", "fr"];
 const fallback = "en";
 
 function getBestLanguage():
@@ -18,7 +18,7 @@ function getBestLanguage():
   );
 }
 
-const NO_TRANSLATION = "Missing Translation"
+const MISSING_TRANSLATION= 'MISSING TRANSLATION'
 
 // create a translation object with your translations
 const translate = createTranslations<TranslationLanguages>()(
@@ -54,7 +54,7 @@ const translate = createTranslations<TranslationLanguages>()(
     layoutPage: {
       mainMenu: {
         fr: "page du menu principal",
-        en: "Main Menu Page",
+        en: "Main Menu",
       },
       coachee:{
         fr:"SÉLECTEUR D'ENTRAÎNEUR",
@@ -153,9 +153,39 @@ const translate = createTranslations<TranslationLanguages>()(
         en:"Invalid time or date"
       },
       notes:{
-        fr:NO_TRANSLATION,
+        fr:MISSING_TRANSLATION,
         en:"Meeting Notes:"
       }
+    },
+    setting:{
+      language:
+      {
+        en:"Language",
+        fr:MISSING_TRANSLATION,
+      },
+      darkMode:
+      {
+        en:"Dark Mode",
+        fr:MISSING_TRANSLATION,
+      },
+      profilePic:
+      {
+        en:"Update Profile Picture",
+        fr:MISSING_TRANSLATION,
+      },
+    },
+    languageSelect:
+    {
+      english:
+      {
+        en:"English",
+        fr:MISSING_TRANSLATION+"(english)",
+      },
+      french:
+      {
+        en:"French",
+        fr:MISSING_TRANSLATION+"(french)",
+      },
     }
   },
   {

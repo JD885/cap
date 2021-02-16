@@ -28,7 +28,6 @@ export function Touchpoint() {
       <ListItem style={listItemStyle} button component={Link} to="/app/triad" >
         <ListItemText style={listItemTextStyle} primary="Triad" />
       </ListItem>
-      <Link to="/app/coachee" >&lt;&lt; Go Back  &lt;&lt;</Link>
     </div >
   );
 }

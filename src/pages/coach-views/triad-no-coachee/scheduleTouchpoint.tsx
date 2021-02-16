@@ -5,13 +5,13 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
-import { getCoacheesByCoach, getMeetingTypes, createTouchpoint } from '../api/api';
-import { Coachee } from '../models/coachee';
-import { MeetingType } from '../models/meetingType';
-import { GlobalContext } from '../stores/global-store';
+import { getCoacheesByCoach, getMeetingTypes, createTouchpoint } from '../../../api/api';
+import { Coachee } from '../../../models/coachee';
+import { MeetingType } from '../../../models/meetingType';
+import { GlobalContext } from '../../../stores/global-store';
 import { useQuery, useMutation } from 'react-query';
-import { translate } from "../constants/translate";
-import {TouchpointSkeleton} from '../components/skeleton-loader/schedule-touchpoint-skeleton'
+import { translate } from "../../../constants/translate";
+import {TouchpointSkeleton} from '../../../components/skeleton-loader/schedule-touchpoint-skeleton'
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocalStore, useObserver} from 'mobx-react-lite'
+import { useLocalStore} from 'mobx-react-lite'
 
 //This global store can be used by all components. 
 
@@ -12,7 +12,9 @@ interface globalStorage
     _username?:string;
     _email?:string;
     _userID?:number
-    changeUser?:any;
+    darkMode:boolean
+    changeUser?:any
+    toggleDark?:any
 
 }
 
@@ -24,7 +26,7 @@ export interface globalUser
 }
 
 
-export const GlobalContext = React.createContext<globalStorage>({})
+export const GlobalContext = React.createContext<globalStorage>({darkMode:false})
 
 export function GlobalProvider({children})
 {
@@ -33,15 +35,20 @@ export function GlobalProvider({children})
             _username:"",
             _email:"",
             _userID:NaN,
+            darkMode:false,
             changeUser: ({username, email, userID}:globalUser) =>
             {
                 globalStore._username=username;
                 globalStore._email = email;
                 globalStore._userID= userID
             },
+            toggleDark: () =>
+            {
+                globalStore.darkMode=!globalStore.darkMode
+            }
         }
     ))
-
+    
     return(
         <GlobalContext.Provider value={globalStore}>{children}</GlobalContext.Provider>
     )
