@@ -174,6 +174,49 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:MISSING_TRANSLATION,
       },
     },
+    survey:{
+      results:{
+        en:"Results",
+        fr: MISSING_TRANSLATION
+      },
+      edit:{
+        en:"Edit",
+        fr: MISSING_TRANSLATION
+      },
+      cancel:{
+        en:"Cancel",
+        fr: MISSING_TRANSLATION
+      },
+      create:{
+        en:"Create",
+        fr: MISSING_TRANSLATION
+      },
+      update:{
+        en:"Update",
+        fr: MISSING_TRANSLATION
+      },
+      newrecord:{
+        en:"New Record",
+        fr: MISSING_TRANSLATION
+      },
+      avgScore:{
+        en:"Average Score",
+        fr: MISSING_TRANSLATION
+      },
+      assnDate:{
+        en:"Assigned Date",
+        fr: MISSING_TRANSLATION
+      },
+      dueDate:{
+        en:"Due Date",
+        fr: MISSING_TRANSLATION
+      },
+      complDate:{
+        en:"Survey Completion Date",
+        fr: MISSING_TRANSLATION
+      },
+
+    },
     languageSelect:
     {
       english:

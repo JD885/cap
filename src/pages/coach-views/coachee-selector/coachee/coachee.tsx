@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {TabPanel} from '../../../../components/tab-panel'
 import {ScheduleTouchpoint} from '../../triad-no-coachee/scheduleTouchpoint'
+import {DisplaySurveys} from './survey'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -53,7 +54,7 @@ export const Coachee = withRouter(({ history, match }) => {
         centered
       >
         <Tab label="Touchpoint" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
+        <Tab label="Surveys" {...a11yProps(1)} />
         <Tab label="Item Three" {...a11yProps(2)} />
 
       </Tabs>
@@ -62,7 +63,7 @@ export const Coachee = withRouter(({ history, match }) => {
         <ScheduleTouchpoint coacheeID={String(match.params.id)}/>
       </TabPanel>
       <TabPanel value={tabIndex} index={1}>
-        Item Two
+        <DisplaySurveys id={match.params.id}/>
       </TabPanel>
       <TabPanel value={tabIndex} index={2}>
         Item Three

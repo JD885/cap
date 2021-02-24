@@ -13,7 +13,7 @@ import { QualityTracker } from './pages/admin/qualityTracker';
 import { CoacheeSelector } from './pages/coach-views/coachee-selector/coacheeSelector';
 import { Touchpoint } from './pages/coach-views/coachee-selector/coachee/touchpoint';
 import { ABS } from './pages/coach-views/coachee-selector/coachee/abs';
-import { Survey } from './pages/coach-views/coachee-selector/coachee/survey';
+import { DisplaySurveys } from './pages/coach-views/coachee-selector/coachee/survey';
 import { Meeting } from './pages/coach-views/coachee-selector/coachee/meeting';
 import { Field } from './pages/coach-views/coachee-selector/coachee/field';
 import { MeetingTraining } from './pages/coach-views/coachee-selector/coachee/meetingTraining';
@@ -78,7 +78,7 @@ const App=observer(()=>
             <Route path='/app/coacheeSelector' component={CoacheeSelector} />
             <Route path='/app/abs' component={ABS} />
             <Route path='/app/touchpoint' component={Touchpoint} />
-            <Route path='/app/survey' component={Survey} />
+            <Route path='/app/survey' component={DisplaySurveys} />
             <Route path='/app/meeting' component={Meeting} />
             <Route path='/app/field' component={Field} />
             <Route path='/app/meetingTraining' component={MeetingTraining} />

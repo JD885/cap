@@ -47,6 +47,52 @@ export function makeServer()
                 return attrs;
             });
 
+            this.get(API.getSurveysByCoachee, () =>{
+                return [
+                      {
+                        surveyNumber: 1,
+                        averageScore: 2,
+                        surveyName: "Survey 1",
+                        assnDate: "2021-01-21",
+                        surveyComplDate: "",
+                        dueDate: "2021-03-24",
+                      },
+                      {
+                        surveyNumber: 2,
+                        averageScore: 3,
+                        surveyName: "Survey 2",
+                        assnDate: "2021-01-21",
+                        surveyComplDate: "",
+                        dueDate: "2021-03-24",
+                      },
+                      {
+                        surveyNumber: 3,
+                        averageScore: 4,
+                        surveyName: "Survey 3",
+                        assnDate: "2021-01-21",
+                        surveyComplDate: "",
+                        dueDate: "2021-03-24",
+                      }
+                ]
+                
+            });
+
+            this.get(API.getAllSurveyTypes, () => 
+            {
+                return (
+                    [
+                        { surveyNumber: '1', surveyName: "Survey Type 1"},
+                        { surveyNumber: '2', surveyName: "Survey Type 2" },
+                        { surveyNumber: '3', surveyName: "Survey Type 3"}
+                    ]
+                );
+            });
+
+            this.post(API.createSurveyRecord, (schema, request) => {
+                let attrs = JSON.parse(request.requestBody);
+                attrs.surveyId = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+                return attrs;
+            });
             ///Add your mirage js calls here
 
 
