@@ -17,6 +17,7 @@ import { translate } from "../../../../constants/translate";
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {DisplaySurveys} from './survey'
+import { Triad } from './triad';
 
 interface TabPanelProps {
   children?: React.ReactNode;

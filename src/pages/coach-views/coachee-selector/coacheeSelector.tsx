@@ -8,6 +8,8 @@ import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import { useQuery} from 'react-query';
 import {CoacheeSelectorSkeleton} from '../../../components/skeleton-loader/coachee-selector-skeleton';
 import {translate} from "../../../constants/translate";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 //fix this
 function dateDiff(first, second) {
@@ -107,8 +109,18 @@ export function CoacheeSelector() {
               </div>            
             </ListItem>
           )
+       
         })}
       </div>}
+      <Fab variant="extended" 
+        className="addNewButton"
+        size='medium' 
+        
+        color='primary'
+        component={Link} to={'/app/addNewCoachee'}>
+              <AddIcon/>
+            New Coachee 
+       </Fab>
     </div>
   );
 }

@@ -119,6 +119,17 @@ img.name {
   align-items: center;
 }
 
+
+
+
+
+
+
+.newCapInput
+{
+  font-size: 16px;
+  margin-right: 20px;
+}
 /* Coachee Profile CSS */
 * {
   box-sizing: border-box;
@@ -173,4 +184,23 @@ img.name {
     max-width: 80%;
     height: auto;
   }
+}
+.errorMsg{
+  color:red;
+}
+/* below removes the step counter on input fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.addCoachee-form{
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+.formcontrol{
+  text-align: center;
 }

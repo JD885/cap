@@ -46,6 +46,7 @@ input, textarea{
   background-color: #edeff0;
   padding: 0 8px;
   font-family: Arial, Helvetica, sans-serif;
+  resize: none
 }
 
 input[type=submit] {
@@ -88,4 +89,10 @@ select {
 
 select:required {
   border: 1px solid red;
+}
+.MuiFab-extended.MuiFab-sizeMedium{
+  margin:55px;
+}
+.input{
+  font-size:100px ;
 }

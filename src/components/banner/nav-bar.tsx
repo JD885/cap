@@ -7,9 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles,} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button/Button';
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ExitToAppIcon from '@material-ui/icons/ExitToAppTwoTone';
-import TuneIcon from '@material-ui/icons/TuneTwoTone';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircleTwoTone';
 import TrendingUpIcon from '@material-ui/icons/TrendingUpTwoTone';
@@ -75,7 +74,7 @@ export function Navbar() {
         </ListItem>
 
         {isAdmin && 
-            <ListItem onClick={handleDrawerToggle} button component={Link} to="/app/dashboard">
+            <ListItem onClick={handleDrawerToggle} button component={Link} to="/app/dashboard/company">
                 <ListItemIcon><TrendingUpIcon/></ListItemIcon>
                 <ListItemText primary="Admin" />
             </ListItem>

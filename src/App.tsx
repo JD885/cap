@@ -1,11 +1,9 @@
 import React, { useState,useEffect} from 'react';
 import { ThemeProvider, createMuiTheme,  } from '@material-ui/core/styles';
-import { Route, Switch, Link as RouterLink } from 'react-router-dom';
-import { AppBar, Link, Paper, Toolbar, Typography } from "@material-ui/core";
-import { GlobalContext, GlobalProvider } from './stores/global-store';
+import { Route, Switch } from 'react-router-dom';
+import { Paper } from "@material-ui/core";
+import { GlobalProvider } from './stores/global-store';
 import './App.css';
-
-import { Login } from './pages/login/login';
 import { Layout } from './pages/coach-views/coachee-selector/coachee/layout';
 import { Coachee } from './pages/coach-views/coachee-selector/coachee/coachee';
 import { Dashboard } from './pages/admin/dashboard';
@@ -19,14 +17,16 @@ import { Field } from './pages/coach-views/coachee-selector/coachee/field';
 import { MeetingTraining } from './pages/coach-views/coachee-selector/coachee/meetingTraining';
 import { Triad } from './pages/coach-views/coachee-selector/coachee/triad';
 import { ScheduleTouchpoint } from './pages/coach-views/triad-no-coachee/scheduleTouchpoint';
-import {translate} from "./constants/translate";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Banner } from './components/banner/banner';
 import { SplashScreen } from './pages/login/splash-screen';
-import { observer, Observer } from 'mobx-react-lite';
-import { Dark } from './stores/dark-mode'
+import { observer } from 'mobx-react-lite';
+import { Dark } from './stores/dark-mode';
+import AddNewCoachee from './pages/coach-views/newCoachee/add-new-coachee';
+
 import { ImageModal } from './components/settings/image-modal';
+import { fromUnixTime } from 'date-fns/esm';
 
 const queryClient = new QueryClient();
 
@@ -63,7 +63,7 @@ const App=observer(()=>
     <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
     <ThemeProvider theme={dark.isDark ? darkTheme : lightTheme}>
-      {/* paper allows for the changing in the theme, so wrap file componets and pages in a paper componet  */}
+      {/* {/* paper allows for the changing in the theme */}
       <Paper style={{ height: "100%", minHeight:"100vh" }}>
         {/* paper handles all of the background and forground that will be used through out the app, app bar is the banner for the top so toggel switch wasnt placed in a odd space  */}
         <GlobalProvider>
@@ -84,6 +84,7 @@ const App=observer(()=>
             <Route path='/app/meetingTraining' component={MeetingTraining} />
             <Route path='/app/triad' component={Triad} />
             <Route path='/app/scheduleTouchpoint' component={ScheduleTouchpoint} />
+            <Route path='/app/addNewCoachee' component={AddNewCoachee}/>
             <Route path='/' render={() => (<div>404 NOT FOUND</div>)}></Route>
           </Switch>
         </GlobalProvider>

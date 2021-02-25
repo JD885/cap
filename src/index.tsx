@@ -11,11 +11,10 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 makeServer();
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <Router>
       <App />
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 

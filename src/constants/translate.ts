@@ -193,6 +193,109 @@ const translate = createTranslations<TranslationLanguages>()(
         en:"Meeting Notes:"
       }
     },
+    AddNewCoachee:{
+      Title:{
+        en:'Add New Coachee',
+        fr:MISSING_TRANSLATION,
+      },
+      firstName:{
+        en:'First Name',
+        fr:MISSING_TRANSLATION,
+      },
+      firstNameError:{
+        en:'First name is needed',
+        fr:MISSING_TRANSLATION,
+      },
+      lastName:{
+        en:'Last Name',
+        fr:MISSING_TRANSLATION,
+      },
+      lastNameError:{
+        en:'A last name is needed',
+        fr:MISSING_TRANSLATION,
+      },
+      cellphone:{
+        en:'Cellphone',
+        fr:MISSING_TRANSLATION,
+
+      },
+      cellphoneError:{
+        en:"A cellphone is required",
+        fr:MISSING_TRANSLATION,
+      },
+      email:{
+        en:'Email',
+        fr:MISSING_TRANSLATION,
+      },
+      emailERROR:{
+        en:'A email is required',
+        fr:MISSING_TRANSLATION,
+      },
+      officeNumber:{
+        en:'Office Number',
+        fr:MISSING_TRANSLATION,
+      },
+      officeNumberError:{
+        en:'A office number is needed with a area code',
+        fr:MISSING_TRANSLATION
+      },
+      building:{
+        en:'WorkLocation',
+        fr:MISSING_TRANSLATION,
+      },
+      buildingError:{
+        en:'A building address is required',
+        fr:MISSING_TRANSLATION,
+      },
+      workloaction:{
+        en:'Work Location',
+        fr:MISSING_TRANSLATION,
+      },
+      workloactionError:{
+        en:'A work loaction is required',
+        fr:MISSING_TRANSLATION,
+      },
+      survey:{
+        en:'Survey Completed',
+        fr:MISSING_TRANSLATION,
+      },
+      surveyError:{
+        en:'which survey has been completed',
+        fr:MISSING_TRANSLATION,
+      },
+      CAP:{
+        en:'CAP Completed',
+        fr:MISSING_TRANSLATION,
+      },
+      company:{
+        en:'Company',
+        fr:MISSING_TRANSLATION,
+      },
+      department:{
+        en:'Department',
+        fr:MISSING_TRANSLATION,
+      },
+      manager:{
+        en:'managers',
+        fr:MISSING_TRANSLATION,
+      },
+      supervisor:{
+        en:'Supervisor',
+        fr:MISSING_TRANSLATION,
+      },
+      vp:{
+        en:'Vice President',
+        fr:MISSING_TRANSLATION,
+      },
+      submit:{
+        en:'Submit',
+        fr:MISSING_TRANSLATION,
+      },
+      snackMessage:{
+        en:'Success on adding coachee!!',
+        fr:MISSING_TRANSLATION,
+      },
+    },
     setting:{
       language:
       {
@@ -265,7 +368,54 @@ const translate = createTranslations<TranslationLanguages>()(
         en:"French",
         fr:MISSING_TRANSLATION+"(french)",
       },
+    },
+    Triad:{
+      notes:{
+        fr:MISSING_TRANSLATION,
+        en:"Meeting Notes:"
+      },
+      goals:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Goals"
+      },
+      observations:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Observations"
+      },
+      opportunities:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Opportunities"
+      },
+      commitments:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Commitments"
+      },
+      meetingNotesTitle:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Meeting notes from "
+      },
+      allCapItems:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"All CAPs"
+      },
+      triadSaved:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Triad notes successfully saved!"
+      },
+      capGraduated:
+      {
+        fr:MISSING_TRANSLATION,
+        en:"Cap Graduated!"
+      }
     }
+  
   },
   {
     language: getBestLanguage(),

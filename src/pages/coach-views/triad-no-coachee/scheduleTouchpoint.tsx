@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, { useContext, useState, useEffect} from 'react';
+import React, { useContext, useState } from 'react';
 import { Typography, Button, InputLabel, MenuItem, FormControl, Select, Snackbar, CircularProgress, TextField } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
@@ -153,7 +153,7 @@ export function ScheduleTouchpoint(prop?:coacheeProp) {
   };
 
   return (
-    <>
+    <React.Fragment>
       <form className={classes.root} onSubmit={saveTouchpoint}>
         <Typography className={classes.title} variant='h5' align='center'>{translations.title}</Typography>
         {(types.isLoading || coachees.isLoading)
@@ -236,6 +236,6 @@ export function ScheduleTouchpoint(prop?:coacheeProp) {
           {alertMessage}
         </Alert>
       </Snackbar>
-    </>
+    </React.Fragment>
   );
 }
