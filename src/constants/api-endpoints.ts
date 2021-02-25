@@ -1,9 +1,11 @@
 export const API=
 {
-    coacheeList: "/api/getAllCoachees",
-    getCoacheesByCoach: "/api/getCoacheesByCoach", //very similar to coacheeList
+    getCoacheesByCoach: "/api/getCoacheesByCoach",
     getMeetingTypes: "/api/getMeetingTypes",
     createTouchpoint: "/api/createTouchpoint",
+    //Coachee Selector & Coachee Profile    
+    coacheeList: "/api/getCoacheeList",
+    coacheeInfo: "/api/getCoacheeInfo",
     //Survey Stuff
     getSurveysByCoachee: "/api/getSurveysByCoachee",
     getAllSurveyTypes: "/api/getAllSurveyTypes",

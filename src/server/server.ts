@@ -6,17 +6,35 @@ export function makeServer()
     return createServer({
         //You can play with this number to increase and decrease delay
         //in responss time (for error and loading state testing)
-        timing: 1000 ,
+        timing: 1000,
         routes()
         {
             this.get(API.coacheeList, () =>
             {
-                return(
+            return(
                 [
-                    {id: "201", name: "Frank Evans"},
-                    {id: "202", name: "Trott Smith"},
-                    {id: "203", name: "Reily Davis"}
-                ]);
+                {id: "201", name: "Maria Garcia", surveyDueDate: "2021-02-21", absDueDate: "2021-02-29"},
+                {id: "202", name: "Trott Smith", surveyDueDate: "2021-03-20", absDueDate: "2021-03-03"},
+                {id: "203", name: "Reily Davis", surveyDueDate: "2021-02-26", absDueDate: "2021-02-24"},
+                {id: "204", name: "Frank Evans", surveyDueDate: "2021-03-20", absDueDate: "2021-03-20"}
+                ])
+            })
+
+            this.get(API.coacheeInfo, () =>
+            {
+            return(
+                [
+                {id: 201,
+                name: "Maria Garcia",
+                email: "marcia@gmail.com",
+                cellNumber: "804-827-2708",
+                teamNumber: 1,
+                officeNumber: "908-442-0706",
+                building: "Building A",
+                workLocation: "1068  Eden Street",
+                surveyDueDate: "2021-02-21",
+                absDueDate: "2021-02-29"}
+                ])
             })
 
             this.get(API.getCoacheesByCoach, () => 

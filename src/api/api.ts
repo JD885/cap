@@ -3,6 +3,8 @@ import ky from 'ky'
 import { Coachee } from '../models/coachee';
 import { MeetingType } from '../models/meetingType';
 import { Touchpoint } from '../models/touchpoint' 
+import { coacheeList } from '../models/coacheeList';
+import { coacheeInfo } from '../models/coacheeInfo';
 import { SurveyResult } from "../models/surveyresult";
 import {Survey} from "../models/survey"
 
@@ -26,6 +28,17 @@ export async function createTouchpoint(touchpoint:Touchpoint):Promise<Touchpoint
   return await ky.post(API.createTouchpoint, {json:touchpoint}).json()
 }
 
+//Coachee Selector & Coachee Profile
+export async function getCoacheeList(id:string):Promise<coacheeList[]>
+{
+    return await ky.get(API.coacheeList+"?"+id).json()
+}
+
+export async function getCoacheeInfo(id:string):Promise<coacheeInfo[]>
+{
+    return await ky.get(API.coacheeInfo+"?"+id).json()
+}
+  
 //Survey Calls
 export async function getSurveysbyCoachee(id:number):Promise<SurveyResult[]>
 {

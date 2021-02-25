@@ -77,10 +77,6 @@ const translate = createTranslations<TranslationLanguages>()(
       title: {
         fr: "Implémentation du sélecteur de coaché",
         en: "Coachee Selector Implementation",
-      },
-      goto:{
-        fr: "aller à la page coaché",
-        en: "go to coachee page",
       }
     },
     coacheePage: {
@@ -88,17 +84,57 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:"coaché",
         en:"coachee"
       },
-      tabTouchpoint: {
+      touchpoints: {
         fr: "point de contact",
         en: "Touchpoints",
       },
-      tabABSModules:{
+      abs:{
+        fr: "Module ABS",
+        en: "ABS Module",
+      },
+      abss:{
         fr: "Modules ABS",
         en: "ABS Modules",
       },
-      tabSurvey:{
+      survey:{
         fr: "Sondage",
         en: "Survey",
+      },
+      surveys:{
+        fr: "Enquêtes",
+        en: "Surveys",
+      },
+      pastDue:{
+        fr: "en souffrance",
+        en: "past due",
+      },
+      nothingDue:{
+        fr: "Rien de prévu dans les deux prochaines semaines.",
+        en: "Nothing due in the next two weeks.",
+      },
+      dueIn:{
+        fr: "dû dans",
+        en: "due in",
+      },
+      team:{
+        fr: "Équipe",
+        en: "Team",
+      },
+      office:{
+        fr: "Bureau",
+        en: "Office",
+      },
+      building:{
+        fr: "Bâtiment",
+        en: "Building",
+      },
+      workLocation:{
+        fr: "Lieu de travail",
+        en: "Work location",
+      },
+      editCoachee:{
+        fr: "Modifier le coaché",
+        en: "Edit coachee",
       }
     },
     qualityTracker:{
