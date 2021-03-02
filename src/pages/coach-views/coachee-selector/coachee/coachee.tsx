@@ -14,8 +14,6 @@ import { useQuery} from 'react-query';
 import { CoacheeProfileSkeleton } from '../../../../components/skeleton-loader/coachee-profile-skeleton';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import { translate } from "../../../../constants/translate";
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import {DisplaySurveys} from './survey'
 import { Triad } from './triad';
 
@@ -25,6 +23,7 @@ interface TabPanelProps {
   value: any;
 }
 
+//all styling should be moved from index.css to here
 const useStyles = makeStyles(() => ({
   button: {
     textTransform: "none",
@@ -47,9 +46,8 @@ export const Coachee = withRouter(({ history, match }) => {
   //translations
   const translation = translate.use().coacheePage;
 
-  //TEMPORARY STYLING
+  //get styles from above
   const classes = useStyles();
-  //profile stying is in index.css it should be moved here
 
   let currentDate = new Date();
   let coacheeInfo;

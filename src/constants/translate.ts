@@ -77,6 +77,14 @@ const translate = createTranslations<TranslationLanguages>()(
       title: {
         fr: "Implémentation du sélecteur de coaché",
         en: "Coachee Selector Implementation",
+      },
+      search: {
+        fr: "Chercher",
+        en: "Search",
+      },
+      noResultsFor: {
+        fr: "Aucun résultat pour",
+        en: "No results for",
       }
     },
     coacheePage: {
