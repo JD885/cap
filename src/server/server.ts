@@ -1,3 +1,5 @@
+import { id } from 'date-fns/locale';
+import { utimes } from 'fs';
 import { createServer } from 'miragejs';
 import { API } from '../constants/api-endpoints';
 import {formatDistance, subDays} from 'date-fns'
@@ -18,11 +20,11 @@ export function makeServer()
             {
             return(
                 [
-                {id: "202", name: "Trott Smith", surveyDueDate: "2021-03-20", absDueDate: "2021-03-28"},
-                {id: "201", name: "Maria Garcia", surveyDueDate: "2021-02-21", absDueDate: "2021-02-29"},                
-                {id: "203", name: "Reily Davis", surveyDueDate: "2021-03-05", absDueDate: "2021-03-17"},
-                {id: "204", name: "Frank Evans", surveyDueDate: "2021-03-20", absDueDate: "2021-03-20"},
-                {id: "204", name: "Mark Evans", surveyDueDate: "2021-03-10", absDueDate: "2021-03-20"}
+                {coacheeId: "201", name: "Maria Garcia", surveyDueDate: "2021-02-21", absDueDate: "2021-02-29"},
+                {coacheeId: "202", name: "Trott Smith", surveyDueDate: "2021-03-20", absDueDate: "2021-03-03"},
+                {coacheeId: "203", name: "Reily Davis", surveyDueDate: "2021-02-26", absDueDate: "2021-02-24"},
+                {coacheeId: "204", name: "Frank Evans", surveyDueDate: "2021-03-20", absDueDate: "2021-03-20"}
+
                 ])
             })
 
@@ -71,6 +73,185 @@ export function makeServer()
                 return attrs;
             });
 
+            this.put(API.updateABSModule, (schema, request) => {
+                let attrs = JSON.parse(request.requestBody);
+                return attrs;
+
+            })
+
+            this.delete(API.deleteModule, (schema, request) => {
+                let attrs = JSON.parse(request.requestBody);
+                return attrs;
+
+            })
+
+            this.put(API.updateSelectedModule, (schema, request) => {
+                let attrs = JSON.parse(request.requestBody);
+                return attrs;
+
+            })
+
+            this.post(API.createModule, (schema, request) => {
+                let attrs = JSON.parse(request.requestBody);
+                return attrs;
+            });
+
+            this.get(API.getABSModules,(schema,request) => {
+                let aa=request.queryParams;
+                console.log(aa['201']);
+                return(
+                    [
+                        {
+                            coacheeID:'201',
+                            absModule:
+                                [
+                                    {ID:'1',absmoduleName:'module 1',assignedDate:'2021-02-10T00:00:00',dueDate:'2021-03-24T00:00:00'},
+                                    {ID:'2',absmoduleName:'module 2',assignedDate:'2021-01-14T00:00:00',dueDate:'2021-03-08T00:00:00',completedDate:'2021-02-18T00:00:00'},
+                                    {ID:'3',absmoduleName:'module 3',assignedDate:'2021-01-02T00:00:00',dueDate:'2021-01-31T00:00:00'},
+                                    {ID:'4',absmoduleName:'module 4'},
+                                    {ID:'5',absmoduleName:'module 5'},
+                                    {ID:'6',absmoduleName:'module 6'},
+                                    {ID:'7',absmoduleName:'module 7'},
+                                    {ID:'8',absmoduleName:'module 8'},
+                                    
+                                ]
+                        },
+                    ]
+                )
+
+            });
+
+            this.get(API.getModuleDetails, (schema,request) => {
+                if(request.queryParams['201?1']==="true")
+                {
+                    return (
+                        [
+                            { assignedDate:'2021-02-10T00:00:00',
+                                dueDate:'2021-03-04T00:00:00' }
+                        ]
+                        );
+
+                }
+                if(request.queryParams['201?2']==="true"){
+                    return (
+                        [
+                            { assignedDate:'2021-01-14T00:00:00',dueDate:'2021-03-08T20:00:00',completedDate:'2021-02-18T00:00:00' }
+                        ]
+                        );
+                }
+                if(request.queryParams['201?3']==="true"){
+                    return (
+                        [
+                            { assignedDate:'2021-01-02T00:00:00',dueDate:'2021-01-31T00:00:00' }
+                        ]
+                        );
+                }else{
+                    return(
+                        [
+                            { assignedDate:undefined,dueDate:undefined,completedDate:undefined }
+                            
+
+                        ]
+
+                    );
+                }
+                
+                });
+
+
+                this.get(API.getAllABSModules,(schema,request)=>{
+                    return (
+                        [
+                            { ID:'1', absmoduleName:'Module 1' },
+                            { ID:'2', absmoduleName:'Module 2' },
+                            { ID:'3', absmoduleName:'Module 3' },
+                            { ID:'4', absmoduleName:'Module 4' },
+                            { ID:'5', absmoduleName:'Module 5' },
+                            { ID:'6', absmoduleName:'Module 6' },
+                            { ID:'7', absmoduleName:'Module 7' },
+                            { ID:'8', absmoduleName:'Module 8' },
+                        ]
+                        );
+
+                })
+
+                this.get(API.getSelectedABSModule,(schema , request) => {
+                    if(request.queryParams['1']==="true")
+                {
+                    return (
+                        [
+                            { ID:'1', absmoduleName:'Module 1' }
+                        ]
+                        );
+                };
+                if(request.queryParams['2']==="true")
+                {
+                    return (
+                        [
+                            { ID:'2', absmoduleName:'Module 2' }
+                        ]
+                        );
+                };
+                if(request.queryParams['3']==="true")
+                {
+                    return (
+                        [
+                            { ID:'3', absmoduleName:'Module 3' }
+                        ]
+                        );
+                };
+                if(request.queryParams['4']==="true")
+                {
+                    return (
+                        [
+                            { ID:'4', absmoduleName:'Module 4' }
+                        ]
+                        );
+                };
+                if(request.queryParams['5']==="true")
+                {
+                    return (
+                        [
+                            { ID:'5', absmoduleName:'Module 5' }
+                        ]
+                        );
+                };
+                if(request.queryParams['6']==="true")
+                {
+                    return (
+                        [
+                            { ID:'6', absmoduleName:'Module 6' }
+                        ]
+                        );
+                };
+                if(request.queryParams['7']==="true")
+                {
+                    return (
+                        [
+                            { ID:'7', absmoduleName:'Module 7' }
+                        ]
+                        );
+                };
+                if(request.queryParams['8']==="true")
+                {
+                    return (
+                        [
+                            { ID:'8', absmoduleName:'Module 8' }
+                        ]
+                        );
+                }else{
+                    return (
+                        [
+                            { ID:'unknown', absmoduleName:'unknown module' }
+                        ]
+                        );
+
+                }
+                })
+
+           
+
+            ///Add your mirage js calls here
             this.get(API.getCapByID, () =>
             {
                 return(

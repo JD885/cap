@@ -1,18 +1,12 @@
-
-
 .App {
   text-align: center;
 }
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-
 
 .App-link {
   color: #61dafb;
@@ -26,35 +20,36 @@
     transform: rotate(360deg);
   }
 }
-.darkSwitch{
-  position:absolute;
-  right:0%;
-  padding:10px;
+.darkSwitch {
+  position: absolute;
+  right: 0%;
+  padding: 10px;
 }
 
 label {
   font-size: 1rem;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 400
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
 }
 
-input, textarea{
-  width:100%;
+input,
+textarea {
+  width: 100%;
   margin-bottom: 1.25rem;
   border: 1px solid #a2adb7;
   border-radius: 5px;
   background-color: #edeff0;
   padding: 0 8px;
   font-family: Arial, Helvetica, sans-serif;
-  resize: none
+  resize: none;
 }
 
-input[type=submit] {
+input[type='submit'] {
   background-color: var(--dk-blue);
-  color:white;
+  color: white;
 }
 
-input[type=submit]:hover {
+input[type='submit']:hover {
   background-color: var(--lt-blue);
   cursor: pointer;
 }
@@ -63,21 +58,22 @@ input:required {
   border: 1px solid red;
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: .75rem;
+  background-size: 0.75rem;
 }
 
 input:invalid:focus {
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: .75rem;
+  background-size: 0.75rem;
 }
 
-input:valid:required, select:valid:required {
-  border:1px solid green;
+input:valid:required,
+select:valid:required {
+  border: 1px solid green;
 }
 
 select {
-  width:100%;
+  width: 100%;
   line-height: 2;
   margin-bottom: 1.25rem;
   border: 1px solid #a2adb7;
@@ -90,9 +86,12 @@ select {
 select:required {
   border: 1px solid red;
 }
-.MuiFab-extended.MuiFab-sizeMedium{
-  margin:55px;
+.MuiFab-extended.MuiFab-sizeMedium {
+  margin: 55px;
 }
-.input{
-  font-size:100px ;
+.input {
+  font-size: 100px;
+}
+input#date-picker-dialog {
+  border: none;
 }

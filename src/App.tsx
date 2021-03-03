@@ -7,6 +7,7 @@ import './App.css';
 import { Layout } from './pages/coach-views/coachee-selector/coachee/layout';
 import { Coachee } from './pages/coach-views/coachee-selector/coachee/coachee';
 import { Dashboard } from './pages/admin/dashboard';
+import {AbsUpdate} from './pages/admin/abs/absUpdate';
 import { QualityTracker } from './pages/admin/qualityTracker';
 import { CoacheeSelector } from './pages/coach-views/coachee-selector/coacheeSelector';
 import { Touchpoint } from './pages/coach-views/coachee-selector/coachee/touchpoint';
@@ -17,6 +18,8 @@ import { Field } from './pages/coach-views/coachee-selector/coachee/field';
 import { MeetingTraining } from './pages/coach-views/coachee-selector/coachee/meetingTraining';
 import { Triad } from './pages/coach-views/coachee-selector/coachee/triad';
 import { ScheduleTouchpoint } from './pages/coach-views/triad-no-coachee/scheduleTouchpoint';
+import {UpdateAbs} from './pages/coach-views/coachee-selector/coachee/updateAbs';
+import {translate} from "./constants/translate";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Banner } from './components/banner/banner';
@@ -72,8 +75,9 @@ const App=observer(()=>
             {/* These are placeholders and can be freely removed/edited during development */}
             <Route exact path='/' component={Layout}/>
             {/* <Route exact path='/app' component={Layout} /> */}
-            <Route path='/app/coachee/:id?' component={Coachee} />
-            <Route path='/app/dashboard/:id?' component={Dashboard} />
+            <Route exact path='/app/coachee/:id?' component={Coachee} />
+            <Route exact path='/app/dashboard/:id?' component={Dashboard} />
+            <Route exact path='/app/dashboard/absCRUD/:id?' component={AbsUpdate} />
             <Route path='/app/qualityTracker/:id?' component={QualityTracker} />
             <Route path='/app/coacheeSelector' component={CoacheeSelector} />
             <Route path='/app/abs' component={ABS} />
@@ -83,6 +87,7 @@ const App=observer(()=>
             <Route path='/app/field' component={Field} />
             <Route path='/app/meetingTraining' component={MeetingTraining} />
             <Route path='/app/triad' component={Triad} />
+            <Route exact path='/app/coachee/:id?/:moduleid?' component={UpdateAbs} />
             <Route path='/app/scheduleTouchpoint' component={ScheduleTouchpoint} />
             <Route path='/app/addNewCoachee' component={AddNewCoachee}/>
             <Route path='/' render={() => (<div>404 NOT FOUND</div>)}></Route>

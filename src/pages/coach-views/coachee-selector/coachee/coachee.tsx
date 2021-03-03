@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import React, {useState,useContext}from 'react';
+import { Link, withRouter } from "react-router-dom";
+import { ListItem, ListItemText } from '@material-ui/core';
 import { Tooltip } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -14,6 +15,10 @@ import { useQuery} from 'react-query';
 import { CoacheeProfileSkeleton } from '../../../../components/skeleton-loader/coachee-profile-skeleton';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import { translate } from "../../../../constants/translate";
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import {ABS, CoacheeProp} from './abs';
+import { GlobalContext, handleTab } from '../../../../stores/global-store';
 import {DisplaySurveys} from './survey'
 import { Triad } from './triad';
 
@@ -46,7 +51,14 @@ export const Coachee = withRouter(({ history, match }) => {
   //translations
   const translation = translate.use().coacheePage;
 
+
+  const listItemStyle = {
+    height: '15vh'
+  };
+  const listItemTextStyle = { display: "flex", justifyContent: 'center' };
+  const store = useContext(GlobalContext);
   //get styles from above
+
   const classes = useStyles();
 
   let currentDate = new Date();
@@ -92,10 +104,14 @@ export const Coachee = withRouter(({ history, match }) => {
     }
   }
 
-  const [tabIndex, setTab] = useState(0);
+  const [tabIndex, setTab] = useState(store.backTab);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue);
+    const tab: handleTab= {
+      tab:newValue
+    };
+    store.changeTab(tab);
   };
 
   function a11yProps(index: any) {
@@ -105,7 +121,12 @@ export const Coachee = withRouter(({ history, match }) => {
     };
   }
 
+  const coacheeProp: CoacheeProp = {
+    coacheeID: String(match.params.id)
+  };
+  
   return (
+   
     <>
       {/* Coachee Profile Info */}
       {(coacheeInfoQuery.isLoading && <div className={classes.skeleton}><CoacheeProfileSkeleton/></div>)}
@@ -166,12 +187,12 @@ export const Coachee = withRouter(({ history, match }) => {
             <Tab label={translation.surveys} icon={<WatchLaterIcon style={{ color: coacheeInfo.surveyColour }}/>} {...a11yProps(2)}/>
           </Tooltip>
         </Tabs>
-
+ 
         <TabPanel value={tabIndex} index={0}>
           <ScheduleTouchpoint coacheeID={String(match.params.id)}/>
         </TabPanel>
         <TabPanel value={tabIndex} index={1}>
-          ABS Module
+        <ABS {...coacheeProp}/>
         </TabPanel>
         <TabPanel value={tabIndex} index={2}>
           <DisplaySurveys id={match.params.id}/>

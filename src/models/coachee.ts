@@ -1,5 +1,5 @@
 export interface Coachee {
-  coacheeID: number,
+  coacheeID: string,
   firstName: string,
   lastName: string,
   userID: number

@@ -377,6 +377,205 @@ const translate = createTranslations<TranslationLanguages>()(
         fr:MISSING_TRANSLATION+"(french)",
       },
     },
+    coacheeAbs:
+    {
+      due:{
+        en:"Due on: ",
+        fr:"Dû le: ",
+      },
+      complete:{
+        en:"Completed on: ",
+        fr:"Terminé le:",
+      },
+      pastDue:{
+        en:"Past Due: ",
+        fr:"En souffrance: ",
+      },
+      unassign:{
+        en:"Unassigned",
+        fr:"Non attribué",
+      }
+    },
+    updateAbs:{
+      updateTitle:{
+        en:"Update Due Date",
+        fr:"Mettre à jour la date d'échéance",
+      },
+      viewTitle:{
+        en:"View Completed Module",
+        fr:"Afficher le module terminé",
+      },
+      newTitle:{
+        en:"Assign New Module",
+        fr:"Attribuer un nouveau module",
+      },
+      originalDate:{
+        en:"Original Due Date",
+        fr:"Date d'échéance originale",
+      },
+      due:{
+        en:"Due on ",
+        fr:"Dû le ",
+      },
+      complete:{
+        en:"Completed on ",
+        fr:"Terminé le ",
+      },
+      assign:{
+        en:"Assigned on",
+        fr:"Attribué le",
+      },
+      assignTo:{
+        en:"assigned to",
+        fr:"assigné à",
+      },
+      selectDate:{
+        en:"Select New Due Date",
+        fr:"Sélectionnez une nouvelle date d'échéance",
+      },
+      selectDueDate:{
+        en:"Select Due Date",
+        fr:"Sélectionnez la date d'échéance",
+      },
+      updateButton:{
+        en:"UPDATE DUE DATE",
+        fr:"MISE À JOUR DATE D'ÉCHÉANCE",
+      },
+      completeButton:{
+        en:"MARK AS COMPLETE",
+        fr:"MARQUER COMME COMPLET",
+      },
+      returnButton:{
+        en:"BACK",
+        fr:"RETOUR",
+      },
+      assignButton:{
+        en:"ASSIGN MODULE",
+        fr:"ASSIGNER LE MODULE",
+      },
+      dateError:{
+        en:"You have to pick a valid date",
+        fr:"Vous devez choisir une date valide",
+    },
+    updateSuccess:{
+      en:"due date is updated",
+      fr:"la date d'échéance est mise à jour",
+    },
+    completeSuccess:{
+      en:"is marked completed for",
+      fr:"est marqué comme terminé pour",
+    },
+    noData:{
+      en:"There is no data to display, check your connection",
+      fr:"Il n'y a aucune donnée à afficher, vérifiez votre connexion",
+    }
+    },
+    abs:{
+      create:{
+        en:"CREATE NEW ABS",
+        fr:"CRÉER UN NOUVEL ABS",
+      },
+      view:{
+        en:"CURRENT ABS",
+        fr:"ABS ACTUEL",
+      },
+      update:{
+        en:"UPDATE/DELETE ABS",
+        fr:"METTRE À JOUR / SUPPRIMER L'ABS",
+      }
+      
+    },
+    absCreate:{
+      title:{
+        en:"Create New ABS",
+        fr:"Créer un nouvel ABS",
+      },
+      placeholder:{
+        en:"ABS Module Name",
+        fr:"Nom du module ABS",
+      },
+      button:{
+        en:"CREATE",
+        fr:"CRÉER",
+      },
+      error:{
+        en:"Module name is required",
+        fr:"Le nom du module est obligatoire",
+      },
+      success:{
+        en:"is created",
+        fr:"est créé",
+      }
+
+    },
+    absDisplay:{
+      title:{
+        en:"Module: ",
+        fr:"Module: ",
+      },
+      subtitle:{
+        en:"Module id: ",
+        fr:"ID du module: ",
+      }
+
+    },
+    absCRUD:{
+      title:{
+        en:"Module: ",
+        fr:"Module: ",
+      },
+      subtitle:{
+        en:"Module id: ",
+        fr:"ID du module: ",
+      }
+    },
+    absUpdate:{
+      title:{
+        en:"Update ABS Module",
+        fr:"Mettre à jour le module ABS",
+      },
+      previousName:{
+        en:"Previous Module Name",
+        fr:"Nom du module précédent",
+      },
+      newName:{
+        en:"New Module Name",
+        fr:"Nouveau nom de module",
+      },
+      updateButton:{
+        en:"UPDATE",
+        fr:"METTRE À JOUR",
+      },
+      deleteButton:{
+        en:"DELETE THIS MODULE",
+        fr:"SUPPRIMER CE MODULE",
+      },
+      return:{
+        en:"BACK",
+        fr:"RETOUR",
+      },
+      nameError:{
+        en:"New module name cannot be empty",
+        fr:"Le nouveau nom de module ne peut pas être vide",
+      },
+      nameSuccess:{
+        en:"Module name is updated",
+        fr:"Le nom du module est mis à jour",
+      },
+      deleteSuccess:{
+        en:"Module has been deleted",
+        fr:"Le module a été supprimé",
+      },
+      noData:{
+        en:"There is no data to display, check your connection",
+        fr:"Il n'y a aucune donnée à afficher, vérifiez votre connexion",
+      },
+      deletePopup:{
+        en:"Are you sure to delete this module?",
+        fr:MISSING_TRANSLATION,
+      }
+    },
+
     Triad:{
       notes:{
         fr:MISSING_TRANSLATION,
@@ -425,6 +624,7 @@ const translate = createTranslations<TranslationLanguages>()(
     }
   
   },
+
   {
     language: getBestLanguage(),
     fallback: "en",

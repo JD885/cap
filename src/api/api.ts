@@ -4,6 +4,9 @@ import {API} from "../constants/api-endpoints"
 import ky from 'ky'
 import { Coachee } from '../models/coachee';
 import { MeetingType } from '../models/meetingType';
+import { ABSModules } from '../models/absModules';
+import { ModuleDetails} from '../models/moduleDetails';
+import {ABSModuleOnly} from '../models/absModuleOnly';
 import { Touchpoint } from '../models/touchpoint' 
 import { coacheeList } from '../models/coacheeList';
 import { coacheeInfo } from '../models/coacheeInfo';
@@ -32,6 +35,45 @@ export async function createTouchpoint(touchpoint:Touchpoint):Promise<Touchpoint
   return await ky.post(API.createTouchpoint, {json:touchpoint}).json()
 }
 
+export async function createModule(module:ABSModuleOnly):Promise<ABSModuleOnly>
+{
+  return await ky.post(API.createModule, {json:module}).json()
+}
+
+export async function updateABSModule(abs:ABSModules):Promise<ABSModules>
+{
+  return await ky.put(API.updateABSModule, {json:abs}).json()
+}
+
+export async function getABSModules (id:String):Promise<ABSModules[]>
+{
+  return await ky.get(API.getABSModules+"?"+id).json()
+}
+
+export async function getModuleDetails (id:String,moduleid:String):Promise<ModuleDetails[]>
+{
+  return await ky.get(API.getModuleDetails+"?"+id+"?"+moduleid).json()
+}
+
+export async function getAllABSModules():Promise<ABSModuleOnly[]>
+{
+  return await ky.get(API.getAllABSModules).json()
+}
+
+export async function getSelectedABSModule(id:String):Promise<ABSModuleOnly[]>
+{
+  return await ky.get(API.getSelectedABSModule+"?"+id).json()
+}
+
+export async function updateSelectedModule(abs:ABSModuleOnly):Promise<ABSModuleOnly>
+{
+  return await ky.put(API.updateSelectedModule, {json:abs}).json()
+}
+
+export async function deleteModule(id:String):Promise<ABSModuleOnly>
+{
+  return await ky.delete(API.deleteModule+"?"+id).json()
+}
 export async function getCapScore(coacheeID:string):Promise<capItem[]>
 {
   return await ky.get(`${API.getCapByID}?${coacheeID}`).json()

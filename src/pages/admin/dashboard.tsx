@@ -5,6 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import { TabPanel } from '../../components/tab-panel'
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
+import {Abs} from './abs/abs';
 
 function a11yProps(index: any) {
   return {
@@ -18,11 +19,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 340,
+    height: 1600,
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
   },
+  panels:{
+      width: '80vw',
+      height:'1600px',
+  }
 }));
 
 export const Dashboard = withRouter(({ history, match }) => {
@@ -53,6 +58,7 @@ export const Dashboard = withRouter(({ history, match }) => {
           <Tab label="Data to CSV" {...a11yProps(4)} value='data' />
           <Tab label="Data Visualization" {...a11yProps(5)} value='dataVisualization' />
           <Tab label="Goals for Coachee" {...a11yProps(6)} value='coacheeGoals' />
+          <Tab label="Create / Update ABS Module" {...a11yProps(7)} value='absCRUD' />
         </Tabs>
         <TabPanel value={value} index={'company'}>
           Implement Create/Update Company
@@ -74,6 +80,11 @@ export const Dashboard = withRouter(({ history, match }) => {
         </TabPanel>
         <TabPanel value={value} index={'coacheeGoals'}>
           Implement Goals for Coachee
+        </TabPanel>
+        <TabPanel value={value} index={'absCRUD'} >
+          <div className={classes.panels}>
+          <Abs />
+          </div>   
         </TabPanel>
       </div>
     </>
